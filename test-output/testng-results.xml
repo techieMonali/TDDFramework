@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2024-04-10T15:30:54 IST" name="Default suite" finished-at="2024-04-10T15:30:55 IST" duration-ms="57">
+    <groups>
+      <group name="grp1">
+        <method signature="homeTest.test()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" name="test" class="com.selenium.maven.tests.homeTest"/>
+      </group> <!-- grp1 -->
+      <group name="grp2">
+        <method signature="homeTest.test1()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" name="test1" class="com.selenium.maven.tests.homeTest"/>
+      </group> <!-- grp2 -->
+    </groups>
+    <test started-at="2024-04-10T15:30:54 IST" name="Default test" finished-at="2024-04-10T15:30:55 IST" duration-ms="57">
+      <class name="com.selenium.maven.tests.homeTest">
+        <test-method is-config="true" signature="initialize()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:48 IST" name="initialize" finished-at="2024-04-10T15:30:54 IST" duration-ms="6406" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialize -->
+        <test-method is-config="true" signature="bfTest()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:54 IST" name="bfTest" finished-at="2024-04-10T15:30:54 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bfTest -->
+        <test-method is-config="true" signature="bfTest1()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:54 IST" name="bfTest1" finished-at="2024-04-10T15:30:54 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bfTest1 -->
+        <test-method is-config="true" signature="bfCls()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:54 IST" name="bfCls" finished-at="2024-04-10T15:30:54 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bfCls -->
+        <test-method is-config="true" signature="bfM()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:54 IST" name="bfM" finished-at="2024-04-10T15:30:55 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bfM -->
+        <test-method signature="test()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:55 IST" name="test" finished-at="2024-04-10T15:30:55 IST" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test -->
+        <test-method is-config="true" signature="afM()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:55 IST" name="afM" finished-at="2024-04-10T15:30:55 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afM -->
+        <test-method is-config="true" signature="bfM()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:55 IST" name="bfM" finished-at="2024-04-10T15:30:55 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bfM -->
+        <test-method signature="test1()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:55 IST" name="test1" finished-at="2024-04-10T15:30:55 IST" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method is-config="true" signature="afM()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:55 IST" name="afM" finished-at="2024-04-10T15:30:55 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afM -->
+        <test-method is-config="true" signature="afCls()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:55 IST" name="afCls" finished-at="2024-04-10T15:30:55 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afCls -->
+        <test-method is-config="true" signature="afTest()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:55 IST" name="afTest" finished-at="2024-04-10T15:30:55 IST" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afTest -->
+        <test-method is-config="true" signature="deleteAllCookies()[pri:0, instance:com.selenium.maven.tests.homeTest@6069db50]" started-at="2024-04-10T15:30:55 IST" name="deleteAllCookies" finished-at="2024-04-10T15:30:55 IST" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteAllCookies -->
+      </class> <!-- com.selenium.maven.tests.homeTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

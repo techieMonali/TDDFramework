@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class base {
 
-	public static void launchBrowser(String browserType) throws InterruptedException {
+	public static void launchBrowser(String browserType) {
 		WebDriver driver = null;
 		if(browserType=="chrome") {
 			driver = new ChromeDriver();
@@ -23,42 +23,18 @@ public class base {
 		}else if(browserType=="edge") {
 			driver = new EdgeDriver();
 		}else if(browserType=="safari") {
-			driver = new SafariDriver();
+			driver = new SafariDriver();	
 		}else {
 			System.out.println("You forgot to mention Browser name");
 		}
 		
 		driver.get("https://www.amazon.in/");
 		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 		
-		//implicit wait in selenium 4
-		//before : driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-		//driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
-		
-		//explicit wait
-		//before : WebDriverWait wait = new WebDriverWait(driver,10);
-		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
-		WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("myElement")));
-		//fluent wait
-		//before : Wait<WebDriver> fwait = new FluentWait<WebDriver>(driver)
-		//		.withTimeout(30, TimeUnit.SECONDS)
-		//		.pollingEvery(5, TimeUnit.SECONDS)
-		//		.ignoring(NoSuchElementException.class);
-		
-		Wait<WebDriver> fWait = new FluentWait<WebDriver>(driver)
-				.withTimeout(Duration.ofSeconds(10))
-				.pollingEvery(Duration.ofSeconds(10))
-				.ignoring(NoSuchElementException.class);
-		WebElement ele = fWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("myElement")));
 		driver.quit();
 	}
 	
-	public static void main(String[] args) throws InterruptedException {
-		launchBrowser("edge");
-		
-	}
 	
 }
 
