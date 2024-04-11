@@ -1,21 +1,22 @@
 package com.selenium.maven.base;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Duration;
+import java.util.Properties;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class base {
-
-	public static void launchBrowser(String browserType) {
-		WebDriver driver = null;
+	public WebDriver driver = null;
+	
+	public void startSession(String browserType) {
+		
 		if(browserType=="chrome") {
 			driver = new ChromeDriver();
 		}else if(browserType=="firefox") {
@@ -31,10 +32,30 @@ public class base {
 		driver.get("https://www.amazon.in/");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
-		
-		driver.quit();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 	
+	public String getProperty(String filepath, String property) throws IOException {
+		Properties prop = new Properties();
+		String filePath = System.getProperty("user.dir")+filepath;
+
+		try {
+			FileInputStream fis = new FileInputStream(filePath);
+			prop.load(fis);
+			property= prop.getProperty(property);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return property;
+	}
 	
+	public void switchToTab() {
+		
+	}
+	
+	public void closeSession() {
+		driver.quit();
+	}
 }
 

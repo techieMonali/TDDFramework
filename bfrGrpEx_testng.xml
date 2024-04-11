@@ -8,7 +8,7 @@
        </groups>
     <classes>
     
-       <class name="com.selenium.maven.tests.homeTest"/>
+       <class name="com.selenium.maven.tests.testAnnotationSeqEx"/>
        
        
     </classes>
