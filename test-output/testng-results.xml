@@ -1,43 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="4" passed="4" failed="0" skipped="0">
+<testng-results ignored="4" total="5" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-04-11T19:16:08 IST" name="Regression" finished-at="2024-04-11T19:16:17 IST" duration-ms="8985">
+  <suite started-at="2024-04-16T13:49:10 IST" name="Default suite" finished-at="2024-04-16T13:49:10 IST" duration-ms="761">
     <groups>
       <group name="Regression">
-        <method signature="homePageTest.verifySearchBar()[pri:1, instance:com.selenium.maven.tests.homePageTest@55b699ef]" name="verifySearchBar" class="com.selenium.maven.tests.homePageTest"/>
-        <method signature="homePageTest.verifySearchFunc()[pri:2, instance:com.selenium.maven.tests.homePageTest@55b699ef]" name="verifySearchFunc" class="com.selenium.maven.tests.homePageTest"/>
-        <method signature="homePageTest.verifySearchResult()[pri:3, instance:com.selenium.maven.tests.homePageTest@55b699ef]" name="verifySearchResult" class="com.selenium.maven.tests.homePageTest"/>
-        <method signature="homePageTest.verifyTitle()[pri:0, instance:com.selenium.maven.tests.homePageTest@55b699ef]" name="verifyTitle" class="com.selenium.maven.tests.homePageTest"/>
+        <method signature="homePageTest.verifySearchBar()[pri:1, instance:com.selenium.maven.tests.homePageTest@4fe89c24]" name="verifySearchBar" class="com.selenium.maven.tests.homePageTest"/>
       </group> <!-- Regression -->
     </groups>
-    <test started-at="2024-04-11T19:16:08 IST" name="Nopackage" finished-at="2024-04-11T19:16:17 IST" duration-ms="8985">
+    <test started-at="2024-04-16T13:49:10 IST" name="Default test" finished-at="2024-04-16T13:49:10 IST" duration-ms="761">
       <class name="com.selenium.maven.tests.homePageTest">
-        <test-method is-config="true" signature="initiate()[pri:0, instance:com.selenium.maven.tests.homePageTest@55b699ef]" started-at="2024-04-11T19:16:03 IST" name="initiate" finished-at="2024-04-11T19:16:08 IST" duration-ms="5067" status="PASS">
+        <test-method is-config="true" signature="initiate()[pri:0, instance:com.selenium.maven.tests.homePageTest@4fe89c24]" started-at="2024-04-16T13:49:00 IST" name="initiate" finished-at="2024-04-16T13:49:10 IST" duration-ms="9176" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initiate -->
-        <test-method signature="verifyTitle()[pri:0, instance:com.selenium.maven.tests.homePageTest@55b699ef]" started-at="2024-04-11T19:16:08 IST" name="verifyTitle" description="Verify home page title." finished-at="2024-04-11T19:16:08 IST" duration-ms="196" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifyTitle -->
-        <test-method signature="verifySearchFunc()[pri:2, instance:com.selenium.maven.tests.homePageTest@55b699ef]" started-at="2024-04-11T19:16:08 IST" name="verifySearchFunc" description="Verify search bar." finished-at="2024-04-11T19:16:11 IST" duration-ms="3335" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySearchFunc -->
-        <test-method signature="verifySearchBar()[pri:1, instance:com.selenium.maven.tests.homePageTest@55b699ef]" started-at="2024-04-11T19:16:08 IST" name="verifySearchBar" description="Verify search bar." finished-at="2024-04-11T19:16:08 IST" duration-ms="387" status="PASS">
+        <test-method signature="verifySearchBar()[pri:1, instance:com.selenium.maven.tests.homePageTest@4fe89c24]" started-at="2024-04-16T13:49:10 IST" name="verifySearchBar" description="Verify search bar." finished-at="2024-04-16T13:49:10 IST" duration-ms="260" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySearchBar -->
-        <test-method signature="verifySearchResult()[pri:3, instance:com.selenium.maven.tests.homePageTest@55b699ef]" started-at="2024-04-11T19:16:11 IST" name="verifySearchResult" description="Verify search result." finished-at="2024-04-11T19:16:16 IST" depends-on-methods="com.selenium.maven.tests.homePageTest.verifySearchFunc" duration-ms="5264" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- verifySearchResult -->
-        <test-method is-config="true" signature="endSession()[pri:0, instance:com.selenium.maven.tests.homePageTest@55b699ef]" started-at="2024-04-11T19:16:16 IST" name="endSession" finished-at="2024-04-11T19:16:17 IST" duration-ms="324" status="PASS">
+        <test-method is-config="true" signature="endSession()[pri:0, instance:com.selenium.maven.tests.homePageTest@4fe89c24]" started-at="2024-04-16T13:49:10 IST" name="endSession" finished-at="2024-04-16T13:49:10 IST" duration-ms="432" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endSession -->
       </class> <!-- com.selenium.maven.tests.homePageTest -->
-    </test> <!-- Nopackage -->
-  </suite> <!-- Regression -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
