@@ -30,8 +30,8 @@ public class homePageTest extends homePage{
 	@Test(priority=0,groups="Regression",description="Verify home page title.")
 	@Parameters({"first","second"})
 	public void verifyTitle(String first, String second) throws IOException {
-		String actualTitle = obj.getPageTitle();
-		String expTitle = obj.getProperty("\\src\\test\\resources\\testData.properties", "homePageTitle");
+		String actualTitle = driver.getTitle();
+		String expTitle = obj.getPropertyFrmFile("\\src\\test\\resources\\testData.properties", "homePageTitle");
 		
 		Assert.assertEquals(expTitle,actualTitle);
 		logger.info("Verifying title");
@@ -47,10 +47,10 @@ public class homePageTest extends homePage{
 	
 	@Test(priority=2,groups="Regression",description="Verify search bar.")
 	public void verifySearchFunc() throws IOException {
-		String srchStr = obj.getProperty("\\src\\test\\resources\\testData.properties", "searchTxt");
-		obj.searchProduct(srchStr);
-		String actualTitle = obj.getPageTitle();
-		String expTitle = obj.getProperty("\\src\\test\\resources\\testData.properties", "searchStrPgTitle");
+		String srchStr = obj.getPropertyFrmFile("\\src\\test\\resources\\testData.properties", "searchTxt");
+		String actualTitle = obj.searchProduct(srchStr);
+		
+		String expTitle = obj.getPropertyFrmFile("\\src\\test\\resources\\testData.properties", "searchStrPgTitle");
 		
 		Assert.assertEquals(expTitle,actualTitle);
 		logger.info("Verified search functionality");
@@ -58,7 +58,23 @@ public class homePageTest extends homePage{
 	
 	@Test(priority=3,groups="Regression",description="Verify search result.",dependsOnMethods="verifySearchFunc")
 	public void verifySearchResult() throws IOException {
-		obj.openFstItmFrmSrchRslt();
+		int tabCnt = obj.openFstItmFrmSrchRslt();
+		Assert.assertTrue(tabCnt==2);
+		logger.info("After opening item from search list, new window opened successfully");
+	}
+	
+	@Test(priority=4,groups="Regression",description="Close search item tab and switch to home page",
+			dependsOnMethods="verifySearchResult")
+	public void closeOpenedSearchItemTab() {
+		obj.closeTab();
+	}
+	
+	@Test(priority=5,groups="Regression",description="Change language of Amazon website",
+			dependsOnMethods="closeOpenedSearchItemTab")
+	public void changeLanguage() throws InterruptedException {
+		int cnt = obj.changeLang();
+		Assert.assertTrue(cnt==2);
+		logger.info("Language of amazon changed successfully");
 	}
 	
 	@DataProvider

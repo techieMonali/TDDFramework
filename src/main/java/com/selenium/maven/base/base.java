@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.time.Duration;
 import org.apache.commons.io.FileUtils;
 import java.util.Properties;
+import java.util.Set;
+import java.util.Iterator;
+
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -38,24 +41,36 @@ public class base {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
-	public String getProperty(String filepath, String property) throws IOException {
+	public String getPropertyFrmFile(String filepath, String key) throws IOException {
 		Properties prop = new Properties();
 		String filePath = System.getProperty("user.dir") + filepath;
-
+		String value=null;
+		
 		try {
 			FileInputStream fis = new FileInputStream(filePath);
 			prop.load(fis);
-			property = prop.getProperty(property);
+			value = prop.getProperty(key);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return property;
+		return value;
 	}
 
 
-	public void switchToTab() {
-
+	public void switchToWindow() {
+		String currentWindow = driver.getWindowHandle(); //current window handle
+		
+		Set<String> multipleWindows = driver.getWindowHandles(); //all window handle
+		
+		Iterator<String> winItr = multipleWindows.iterator();
+		
+		while(winItr.hasNext()) {
+			String newWin = winItr.next();
+			
+			driver.switchTo().window(newWin); //switched to new window
+		}
+		driver.switchTo().window(currentWindow);//switching back to first window
 	}
 
 	public String takeScreenshot(WebDriver driver, String testName) {

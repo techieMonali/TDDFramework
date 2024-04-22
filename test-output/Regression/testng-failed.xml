@@ -10,8 +10,8 @@
     <classes>
       <class name="com.selenium.maven.tests.homePageTest">
         <methods>
-          <include name="verifyTitle" invocation-numbers="0"/>
           <include name="endSession"/>
+          <include name="changeLanguage"/>
           <include name="initiate"/>
         </methods>
       </class> <!-- com.selenium.maven.tests.homePageTest -->
