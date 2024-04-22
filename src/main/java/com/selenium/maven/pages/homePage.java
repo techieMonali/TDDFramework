@@ -15,6 +15,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Listeners;
@@ -32,7 +33,8 @@ public class homePage extends base{
 	By lngLst = By.cssSelector("#nav-flyout-icp .nav-tpl-itemList  a span i");
 	By selectedLang = By.cssSelector("#icp-nav-flyout span:nth-child(2) div");
 	By lngOp = By.cssSelector("#nav-flyout-icp .nav-tpl-itemList  a i[class='icp-radio']");
-	
+	By srchDrpDwn = By.id("searchDropdownBox");
+	By srchDrpDwnLbl = By.id("nav-search-label-id");
 
 	public boolean verifySearchBarPresence() {
 		return driver.findElement(searchBox).isDisplayed();
@@ -123,6 +125,38 @@ public class homePage extends base{
 		cnt++;
 		logger.info("Selected language randomly from language drop-down to : "+driver.findElement(selectedLang).getText());
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+		do{
+			languagesList.get(rndNum).click();
+		}while(driver.findElement(selectedLang).getText()!=defaultLang);
+		logger.info("Selected default language to : "+driver.findElement(selectedLang).getText());
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+		
 		return cnt;
 	}
+
+	public int selectSrchCat() throws InterruptedException {
+		driver.findElement(srchDrpDwn).isDisplayed();
+		logger.info("Search drop-down displayed");
+		String defaultSrchDrpDwnCat = driver.findElement(srchDrpDwnLbl).getText();
+		driver.findElement(srchDrpDwn).click();
+		logger.info("Clicked on search drop down");
+		
+		Select dropDwnOpns = new Select(driver.findElement(srchDrpDwn));
+		System.out.println(defaultSrchDrpDwnCat);
+		Random rndNm = new Random();
+		int num = rndNm.nextInt(dropDwnOpns.getOptions().size());
+		
+		dropDwnOpns.selectByIndex(num);
+		logger.info("Selected random value from drop-down");
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
+		String newSrchDrpDwnCat = driver.findElement(srchDrpDwnLbl).getText();
+		System.out.println(newSrchDrpDwnCat);
+		int cnt=0;
+		if(defaultSrchDrpDwnCat!=newSrchDrpDwnCat)
+			cnt++;
+		Thread.sleep(3000);
+		return cnt;
+	}
+	
+	
 }

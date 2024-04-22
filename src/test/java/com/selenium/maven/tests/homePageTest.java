@@ -78,6 +78,13 @@ public class homePageTest extends homePage{
 		logger.info("Language of amazon changed successfully");
 	}
 	
+	@Test(priority=6,groups="Regression",description="Select value from search drop down")
+	public void selectSrchCatgri() throws InterruptedException {
+		int cnt = obj.selectSrchCat();
+		Assert.assertTrue(cnt==1);
+		logger.info("Search category got changed successfully.");
+	}
+	
 	@DataProvider
 	public Object[][] provideData() {
 		return new Object[][] {{2,3},{5,5}};

@@ -5,7 +5,7 @@
     <classes>
       <class name="com.selenium.maven.tests.homePageTest">
         <methods>
-          <include name="verifyTitle"/>
+          <include name="selectSrchCatgri"/>
           <include name="endSession"/>
           <include name="initiate"/>
         </methods>
