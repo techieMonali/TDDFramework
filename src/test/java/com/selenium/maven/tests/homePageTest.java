@@ -5,7 +5,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
@@ -21,7 +23,7 @@ public class homePageTest extends homePage{
 
 	public static Logger logger = LogManager.getLogger(homePageTest.class);
 	
-	@BeforeSuite
+	@BeforeTest
 	public void initiate() throws IOException {
 		obj.startSession("chrome");
 		logger.info("Started session");	
@@ -69,8 +71,7 @@ public class homePageTest extends homePage{
 		obj.closeTab();
 	}
 	
-	@Test(priority=5,groups="Regression",description="Change language of Amazon website",
-			dependsOnMethods="closeOpenedSearchItemTab")
+	@Test(priority=5,groups="Regression",description="Change language of Amazon website")
 	public void changeLanguage() throws InterruptedException {
 		int cnt = obj.changeLang();
 		Assert.assertTrue(cnt==2);
@@ -90,7 +91,7 @@ public class homePageTest extends homePage{
 		logger.info(a+" "+b);
 	}
 	
-	@AfterClass
+	@AfterTest
 	public void endSession() {
 		obj.closeSession();
 		logger.info("Ending session");
