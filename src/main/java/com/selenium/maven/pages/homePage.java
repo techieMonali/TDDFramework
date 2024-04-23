@@ -9,6 +9,7 @@ import java.util.Random;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Listeners;
 
@@ -35,6 +35,10 @@ public class homePage extends base{
 	By lngOp = By.cssSelector("#nav-flyout-icp .nav-tpl-itemList  a i[class='icp-radio']");
 	By srchDrpDwn = By.id("searchDropdownBox");
 	By srchDrpDwnLbl = By.id("nav-search-label-id");
+	By brandFilter = By.xpath("//div[@id='brandsRefinements']//span[text()='Brand']");
+	By brandsCheckbox = By.xpath("//div[@id='brandsRefinements']//div[@data-expanded='true']/ul/span//li");
+	By brandsPanel = By.xpath("//div[@id='brandsRefinements']//div[@data-expanded='true']");
+	By slctdBrand = By.xpath("//li//input[@checked='']");
 
 	public boolean verifySearchBarPresence() {
 		return driver.findElement(searchBox).isDisplayed();
@@ -96,7 +100,7 @@ public class homePage extends base{
 		int cnt=0;
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(lngDrpDwn)));
 		
-		FluentWait fWit = new FluentWait(driver)
+		FluentWait<WebDriver> fWit = new FluentWait<WebDriver>(driver)
 				.withTimeout(Duration.ofSeconds(10))
 				.pollingEvery(Duration.ofSeconds(10))
 				.ignoring(StaleElementReferenceException.class);
@@ -154,7 +158,37 @@ public class homePage extends base{
 		int cnt=0;
 		if(defaultSrchDrpDwnCat!=newSrchDrpDwnCat)
 			cnt++;
-		Thread.sleep(3000);
+		
+		return cnt;
+	}
+	
+	//due to website's functionality working differently every time this test case will fail for different reason
+	//though it can be used for javascriptExecutor example
+	public int selectBrandsFromFilter() throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(brandFilter)));
+		js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(brandFilter));
+		
+		//driver.findElement(brandFilter).click();
+		if(driver.findElement(brandsPanel).isDisplayed()==false)
+		js.executeScript("arguments[0].click();", driver.findElement(brandFilter));
+		logger.info("Clicked on brands filter");
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(brandsPanel)));
+		
+		List<WebElement> brands = driver.findElements(brandsCheckbox);
+		//wait.until(ExpectedConditions.visibilityOfAllElements(brands));
+		
+		System.out.println(brands.size());
+		Random rndm = new Random(brands.size());
+		int rndNum = rndm.nextInt();
+		brands.get(rndNum).click();
+		logger.info("Clicked on random brand");
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(slctdBrand)));
+		int cnt=0;
+		if(driver.findElement(slctdBrand).isDisplayed())
+			cnt++;
 		return cnt;
 	}
 	

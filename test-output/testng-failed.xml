@@ -5,8 +5,9 @@
     <classes>
       <class name="com.selenium.maven.tests.homePageTest">
         <methods>
-          <include name="selectSrchCatgri"/>
           <include name="endSession"/>
+          <include name="verifySearchFunc"/>
+          <include name="selectBrands"/>
           <include name="initiate"/>
         </methods>
       </class> <!-- com.selenium.maven.tests.homePageTest -->

@@ -85,6 +85,8 @@ public class homePageTest extends homePage{
 		logger.info("Search category got changed successfully.");
 	}
 	
+	
+	
 	@DataProvider
 	public Object[][] provideData() {
 		return new Object[][] {{2,3},{5,5}};
